@@ -433,14 +433,68 @@
     }
 
     @media (max-width: 640px) {
-      .header-top { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-      .header-meta { width: 100%; }
-      .entry-count { width: 100%; text-align: center; }
-      .grid { grid-template-columns: 1fr; }
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .header-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .entry-count {
+        flex: 1;
+        text-align: center;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
       .brand-sub { display: none; }
-      main { padding: 1.25rem 1rem 2rem; }
-      footer { padding: 1.25rem 1rem; }
-      .header-inner { padding: 0 1rem; }
+      main { padding: 1rem 0.75rem 2rem; }
+      footer {
+        padding: 1rem 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .header-inner { padding: 0 0.75rem; }
+      .brand-name { font-size: 1.05rem; }
+
+      .card {
+        padding: 1rem 1rem 0.9rem;
+        gap: 0.6rem;
+      }
+      .card-title { font-size: 0.88rem; }
+      .card-summary {
+        font-size: 0.78rem;
+        -webkit-line-clamp: 4;
+      }
+      .card-source { font-size: 0.68rem; }
+      .cat-tag { font-size: 0.62rem; padding: 0.2rem 0.55rem; }
+      .card-date { font-size: 0.66rem; }
+
+      .filter-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.72rem;
+      }
+
+      #search {
+        font-size: 0.85rem;
+        padding: 0.6rem 0.9rem 0.6rem 2.2rem;
+      }
+
+      .results-bar { margin-bottom: 0.85rem; }
+      .results-label { font-size: 0.74rem; }
+    }
+
+    @media (max-width: 380px) {
+      .brand-name { font-size: 0.95rem; }
+      main { padding: 0.85rem 0.6rem 1.5rem; }
+      .header-inner { padding: 0 0.6rem; }
+      .card { padding: 0.85rem 0.85rem 0.8rem; }
+      .card-title { font-size: 0.84rem; }
+      .filter-btn { padding: 0.35rem 0.6rem; font-size: 0.68rem; }
     }
   </style>
 </head>
@@ -508,7 +562,7 @@
   </div>
   <div class="last-updated">
     <span class="status-dot"></span>
-    Last updated: March 26, 2025
+    Last updated: March 27, 2026
   </div>
 </footer>
 
@@ -802,14 +856,30 @@ document.getElementById('search').addEventListener('input', e => {
 // ── INIT ──────────────────────────────────────────────────────────────────
 render();
 
-// ── AUTO-REFRESH every 6 hours ────────────────────────────────────────────
+// ── AUTO-REFRESH every 6 hours (reliable across background tabs) ──────────
 const REFRESH_MS = 6 * 60 * 60 * 1000; // 6 hours in ms
-const startTime  = Date.now();
+
+// Persist the target reload time so it survives across the session
+const STORAGE_KEY = 'aihub_next_refresh';
+let nextRefresh = parseInt(sessionStorage.getItem(STORAGE_KEY), 10);
+if (!nextRefresh || nextRefresh <= Date.now()) {
+  nextRefresh = Date.now() + REFRESH_MS;
+  sessionStorage.setItem(STORAGE_KEY, nextRefresh);
+}
+
+function checkAndRefresh() {
+  if (Date.now() >= nextRefresh) {
+    sessionStorage.removeItem(STORAGE_KEY);
+    location.reload();
+    return true;
+  }
+  return false;
+}
 
 function updateCountdown() {
-  const elapsed   = Date.now() - startTime;
-  const remaining = Math.max(0, REFRESH_MS - elapsed);
+  if (checkAndRefresh()) return;
 
+  const remaining = Math.max(0, nextRefresh - Date.now());
   const h = Math.floor(remaining / 3_600_000);
   const m = Math.floor((remaining % 3_600_000) / 60_000);
   const s = Math.floor((remaining % 60_000) / 1000);
@@ -820,7 +890,14 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-setTimeout(() => location.reload(), REFRESH_MS);
+
+// When user returns to tab after it was backgrounded, check immediately
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    checkAndRefresh();
+    updateCountdown();
+  }
+});
 </script>
 </body>
 </html>
