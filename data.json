@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Generative AI and the Future of Higher Education",
+    "source": "EDUCAUSE Review",
+    "date": "2023-05-15",
+    "category": "research",
+    "summary": "Examines how large language models and generative AI tools are reshaping pedagogical practices, faculty roles, and institutional policy in colleges and universities. Addresses both the transformative potential and the risks — including academic integrity challenges — that institutions must proactively navigate. Offers a practical framework for responsible adoption at the course and department level.",
+    "url": "https://er.educause.edu/articles/2023/5/generative-ai-and-the-future-of-higher-education"
+  },
+  {
+    "id": 2,
+    "title": "Rethinking Assessment in the Age of Artificial Intelligence",
+    "source": "Harvard Graduate School of Education",
+    "date": "2023-08-10",
+    "category": "research",
+    "summary": "Argues that AI tools like ChatGPT expose longstanding weaknesses in how higher education assesses learning, and that institutions must shift toward authentic, process-oriented tasks that cannot be easily outsourced to AI. Proposes a set of assessment redesign principles grounded in cognitive science and equitable pedagogy. Draws on case examples from faculty across disciplines who have already adapted their evaluations.",
+    "url": "https://www.gse.harvard.edu/ideas/usable-knowledge/23/08/rethinking-assessment-age-artificial-intelligence"
+  },
+  {
+    "id": 3,
+    "title": "Students' Use of ChatGPT in University Courses: Systematic Literature Review",
+    "source": "Computers & Education: AI",
+    "date": "2024-03-01",
+    "category": "research",
+    "summary": "Synthesizes findings from 42 empirical studies on how undergraduate and graduate students are using ChatGPT for coursework, research, and writing assistance. Identifies key motivational factors, reported benefits, and academic integrity concerns raised by both students and instructors. Concludes with a research agenda for understanding long-term learning outcomes in AI-assisted academic environments.",
+    "url": "https://www.sciencedirect.com/journal/computers-and-education-artificial-intelligence"
+  },
+  {
+    "id": 4,
+    "title": "Faculty Perspectives on AI in Teaching and Learning: A National Survey",
+    "source": "Inside Higher Ed",
+    "date": "2024-01-25",
+    "category": "research",
+    "summary": "Reports findings from a nationally representative survey of over 2,400 college and university faculty examining their attitudes toward generative AI in the classroom. Reveals significant variation by discipline, institution type, and faculty rank in comfort levels, preparedness, and policy preferences. Highlights a gap between faculty interest in AI pedagogical training and the institutional support currently available.",
+    "url": "https://www.insidehighered.com/news/survey/instructors-say-they-want-teach-ai-tools-dont-know-how"
+  },
+  {
+    "id": 5,
+    "title": "Ethical Considerations for AI Use in Higher Education Pedagogy",
+    "source": "Journal of Higher Education Policy & Management",
+    "date": "2024-06-12",
+    "category": "research",
+    "summary": "Explores ethical dimensions of integrating AI into university teaching, including questions of equity, data privacy, transparency, and the erosion of critical thinking skills. Reviews existing institutional AI policies across 30 universities and finds significant inconsistency in how ethical principles are operationalized. Proposes a tiered ethical review process for AI-assisted course design.",
+    "url": "https://www.tandfonline.com/journals/cjhe20"
+  },
+  {
+    "id": 6,
+    "title": "2024 EDUCAUSE Horizon Report: Teaching and Learning Edition",
+    "source": "EDUCAUSE",
+    "date": "2024-05-06",
+    "category": "reports",
+    "summary": "The flagship annual horizon report identifies AI as the defining technology trend shaping teaching and learning over the next one to five years. Covers institutional responses to generative AI, including policy development, AI literacy initiatives, and the evolving role of instructional designers. Includes case studies from leading institutions and a framework for evaluating the readiness of academic technology ecosystems.",
+    "url": "https://library.educause.edu/resources/2024/5/2024-educause-horizon-report-teaching-and-learning-edition"
+  },
+  {
+    "id": 7,
+    "title": "Guidance for Generative AI in Education and Research",
+    "source": "UNESCO",
+    "date": "2023-09-07",
+    "category": "reports",
+    "summary": "UNESCO's authoritative guidance document provides recommendations for governments, institutions, and educators on the responsible integration of generative AI in education settings. Emphasizes human rights principles, pedagogical quality, teacher empowerment, and the need for age-appropriate safeguards for learners. Includes a readiness checklist and a set of policy questions institutions should address before deploying AI tools.",
+    "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"
+  },
+  {
+    "id": 8,
+    "title": "Generative AI in Education: A Quick Briefing for Practitioners",
+    "source": "Jisc",
+    "date": "2023-10-01",
+    "category": "reports",
+    "summary": "Jisc's practitioner-focused briefing offers a plain-language overview of generative AI capabilities, limitations, and immediate implications for UK higher and further education. Provides guidance on policy gaps, student and staff communication, academic integrity considerations, and suggestions for phased AI adoption. Intended for learning technologists, academic staff, and senior leaders without deep technical backgrounds.",
+    "url": "https://www.jisc.ac.uk/guides/generative-ai-a-guide-for-professionals-working-in-education"
+  },
+  {
+    "id": 9,
+    "title": "How Should Higher Education Respond to AI Chatbots?",
+    "source": "Brookings Institution",
+    "date": "2023-03-01",
+    "category": "reports",
+    "summary": "Analyzes the policy and pedagogical challenges that ChatGPT and similar AI chatbots pose for colleges and universities, drawing on educational research and behavioral economics. Critiques blanket bans as ineffective and argues for a more nuanced approach centered on transparent AI policies, redesigned assignments, and student AI literacy education. Offers a set of evidence-based policy recommendations for institutional leaders and policymakers.",
+    "url": "https://www.brookings.edu/articles/how-should-higher-education-respond-to-chatgpt/"
+  },
+  {
+    "id": 10,
+    "title": "Artificial Intelligence and the Future of Teaching and Learning",
+    "source": "U.S. Dept. of Education / OTECH",
+    "date": "2023-05-01",
+    "category": "reports",
+    "summary": "The U.S. Department of Education's Office of Educational Technology lays out a national vision for how AI can support — rather than supplant — educators and learners across the K–20 spectrum. Calls for centering equity, protecting student data, and investing in educator AI literacy as foundational conditions for responsible AI adoption. Provides a policy framework and guiding questions for institutions developing AI governance structures.",
+    "url": "https://www2.ed.gov/documents/ai-report/ai-report.pdf"
+  },
+  {
+    "id": 11,
+    "title": "AI Competency Framework for Students",
+    "source": "UNESCO",
+    "date": "2024-04-30",
+    "category": "frameworks",
+    "summary": "UNESCO's landmark competency framework defines the knowledge, skills, values, and attitudes students at all educational levels need to engage with AI effectively, ethically, and critically. Organized around five core areas — understanding AI, using AI, designing with AI, evaluating AI, and AI ethics — the framework is intended to guide curriculum design across disciplines and institutional contexts. Freely available in multiple languages with supporting guidance for curriculum developers.",
+    "url": "https://www.unesco.org/en/digital-education/ai-competency-framework"
+  },
+  {
+    "id": 12,
+    "title": "AI Competency Framework for Teachers",
+    "source": "UNESCO",
+    "date": "2024-04-30",
+    "category": "frameworks",
+    "summary": "Companion to the student framework, this document defines what teachers across all disciplines need to know and be able to do in order to integrate AI responsibly into their pedagogical practice. Competencies span understanding AI concepts, designing AI-augmented learning experiences, modeling critical AI use for students, and navigating ethical and equity considerations. Provides proficiency levels from beginner to expert and examples of evidence for each competency.",
+    "url": "https://www.unesco.org/en/digital-education/ai-competency-framework"
+  },
+  {
+    "id": 13,
+    "title": "ISTE AI in Education: Competencies for Educators",
+    "source": "ISTE",
+    "date": "2023-06-01",
+    "category": "frameworks",
+    "summary": "ISTE's framework extends its established Educator Standards to address the specific demands of teaching in an AI-rich environment, emphasizing responsible decision-making, human-centered AI design, and equitable access. Covers how educators can scaffold student AI literacy, co-create AI policies with learners, and critically evaluate AI tools before classroom adoption. Widely adopted by school districts and universities as the basis for professional development programming.",
+    "url": "https://iste.org/areas-of-focus/ai-in-education"
+  },
+  {
+    "id": 14,
+    "title": "Jisc AI Skills in Higher Education: A National Framework",
+    "source": "Jisc",
+    "date": "2024-02-01",
+    "category": "frameworks",
+    "summary": "Jisc's national framework identifies the AI skills needed by students and staff in UK higher and further education, organized by role (student, academic, professional services) and proficiency level. Grounded in evidence from sector consultations, it maps AI skills to existing digital literacy frameworks and provides actionable guidance for institutions building AI literacy into curricula and staff development programs. Includes self-assessment tools and a maturity model for institutional AI capability.",
+    "url": "https://www.jisc.ac.uk/ai"
+  },
+  {
+    "id": 15,
+    "title": "Responsible AI Use in Higher Education: Institutional Readiness Framework",
+    "source": "EDUCAUSE",
+    "date": "2024-03-15",
+    "category": "frameworks",
+    "summary": "A practical framework designed to help higher education institutions assess and advance their readiness for responsible AI adoption across governance, infrastructure, pedagogy, and culture. Introduces a five-stage maturity model — from AI-aware to AI-optimized — and provides diagnostic questions, indicators, and recommended actions for each stage. Particularly useful for provosts, CIOs, and academic technology teams leading institutional AI strategy.",
+    "url": "https://library.educause.edu/topics/teaching-and-learning/artificial-intelligence-in-higher-education"
+  },
+  {
+    "id": 16,
+    "title": "AI Pedagogy Resources for Faculty: Harvard Bok Center",
+    "source": "Harvard University",
+    "date": "2024-01-10",
+    "category": "resources",
+    "summary": "Harvard's Derek Bok Center for Teaching and Learning offers a comprehensive, freely accessible collection of AI pedagogy resources including assignment redesign guides, classroom discussion protocols, student-facing syllabi language, and discipline-specific examples. Materials are grounded in learning science and developed with input from faculty across the arts, sciences, and professional schools. Updated continuously as new tools and pedagogical research emerge.",
+    "url": "https://bokcenter.harvard.edu/ai"
+  },
+  {
+    "id": 17,
+    "title": "AI Tools in Teaching: Faculty Resource Hub",
+    "source": "Carnegie Mellon University (Eberly Center)",
+    "date": "2023-11-01",
+    "category": "resources",
+    "summary": "CMU's Eberly Center for Teaching Excellence provides faculty with research-grounded guidance on integrating AI tools into courses across disciplines, with specific attention to learning goals, assessment integrity, and student equity. Includes tool comparisons, recommended prompting strategies for educational use, and frameworks for transparent AI policies in course syllabi. Resources are organized by teaching challenge rather than by tool, making navigation intuitive for non-technical faculty.",
+    "url": "https://www.cmu.edu/teaching/technology/aitools/"
+  },
+  {
+    "id": 18,
+    "title": "Educator Considerations for ChatGPT: A Practical Guide",
+    "source": "OpenAI",
+    "date": "2023-08-01",
+    "category": "resources",
+    "summary": "OpenAI's educator resource provides practical guidance on how teachers and instructors can responsibly introduce ChatGPT into learning environments, including suggestions for transparent use policies, creative pedagogical applications, and ways to foster critical AI literacy alongside tool access. Includes example prompts for common educational tasks and a discussion of the tool's current limitations relevant to academic contexts. Complemented by a student-facing version with guidance on responsible and honest use.",
+    "url": "https://openai.com/educator-considerations-for-chatgpt/"
+  },
+  {
+    "id": 19,
+    "title": "MIT RAISE: Responsible AI for Social Empowerment and Education",
+    "source": "MIT Media Lab / RAISE",
+    "date": "2023-09-15",
+    "category": "resources",
+    "summary": "MIT RAISE develops open-source AI literacy curricula, research, and educator toolkits designed to make responsible AI education accessible at scale, from K–12 through higher education. The RAISE platform includes the DAILy AI curriculum, professional development courses for educators, and research on equity-centered AI education design. Resources are freely available and designed for remix, making them particularly accessible for community colleges and under-resourced institutions.",
+    "url": "https://raise.mit.edu"
+  },
+  {
+    "id": 20,
+    "title": "Stanford HAI: AI+Education Resources for Researchers and Educators",
+    "source": "Stanford Human-Centered AI Institute",
+    "date": "2024-09-01",
+    "category": "resources",
+    "summary": "Stanford HAI's education hub aggregates research publications, policy briefs, recorded lectures, and practitioner guides focused on the intersection of AI and education across K–12 and higher education. Particular strengths include coverage of algorithmic bias in educational technology, AI-driven personalization, and governance frameworks for ed-tech procurement. Researchers can access working papers and datasets; educators can access course-ready materials and recorded faculty panels.",
+    "url": "https://hai.stanford.edu/education"
+  }
+]
