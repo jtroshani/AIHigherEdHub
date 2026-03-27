@@ -34,6 +34,28 @@
       --cat-resources-bg: #ecfdf5;
     }
 
+    /* ── DARK THEME ── */
+    [data-theme="dark"] {
+      --bg:        #0f172a;
+      --surface:   #1e293b;
+      --surface2:  #1a2332;
+      --border:    #334155;
+      --border2:   #475569;
+      --text-1:    #f1f5f9;
+      --text-2:    #cbd5e1;
+      --text-3:    #94a3b8;
+      --text-4:    #64748b;
+      --accent:    #60a5fa;
+      --accent-lt: #1e3a5f;
+      --header-bg: #020617;
+      --header-txt:#e2e8f0;
+
+      --cat-research-bg: #1e3a5f;
+      --cat-reports-bg:  #164e63;
+      --cat-frameworks-bg: #2e1065;
+      --cat-resources-bg: #064e3b;
+    }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -43,6 +65,51 @@
       min-height: 100vh;
       line-height: 1.6;
     }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 0.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(96,165,250,0.4);
+      color: #e2e8f0;
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun  { display: none; }
+
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+
+    [data-theme="dark"] .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+      border-color: #475569;
+    }
+
+    [data-theme="dark"] .read-link { color: #60a5fa; }
+    [data-theme="dark"] .read-link:hover { color: #93c5fd; }
 
     /* ── HEADER ── */
     header {
@@ -517,6 +584,10 @@
           Refreshes in <span id="countdown">6:00:00</span>
         </div>
         <div class="entry-count" id="entryCount">20 entries</div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
       </div>
     </div>
 
@@ -568,6 +639,26 @@
 
 <!-- ════════════════════════════════ DATA + LOGIC ════════════════════════════════ -->
 <script>
+/* ── THEME TOGGLE ── */
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+
+document.getElementById('themeToggle').addEventListener('click', function() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
 const CAT_LABELS = {
   research:   'Research Article',
   reports:    'Report',
