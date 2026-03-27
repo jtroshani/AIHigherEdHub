@@ -111,6 +111,111 @@
     [data-theme="dark"] .read-link { color: #60a5fa; }
     [data-theme="dark"] .read-link:hover { color: #93c5fd; }
 
+    /* ── NEW BADGE ── */
+    .new-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      flex-shrink: 0;
+      animation: badge-pulse 2s ease-in-out 3;
+    }
+
+    .new-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      animation: badge-dot-blink 1s ease-in-out infinite;
+    }
+
+    @keyframes badge-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+      50%      { box-shadow: 0 0 10px 3px rgba(245,158,11,0.35); }
+    }
+
+    @keyframes badge-dot-blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.4; }
+    }
+
+    .card.is-new {
+      border-color: #f59e0b;
+      animation: new-card-glow 2s ease-in-out 3;
+    }
+
+    [data-theme="dark"] .card.is-new {
+      border-color: #d97706;
+    }
+
+    @keyframes new-card-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+      50%      { box-shadow: 0 0 16px 2px rgba(245,158,11,0.2); }
+    }
+
+    /* ── NEW ENTRIES BANNER ── */
+    .new-banner {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      color: #92400e;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .new-banner:hover { background: linear-gradient(135deg, #fde68a, #fcd34d); }
+
+    .new-banner .dismiss {
+      background: rgba(146,64,14,0.15);
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #92400e;
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1;
+      transition: background 0.15s;
+    }
+
+    .new-banner .dismiss:hover { background: rgba(146,64,14,0.25); }
+
+    [data-theme="dark"] .new-banner {
+      background: linear-gradient(135deg, #451a03, #78350f);
+      color: #fde68a;
+    }
+
+    [data-theme="dark"] .new-banner:hover {
+      background: linear-gradient(135deg, #78350f, #92400e);
+    }
+
+    [data-theme="dark"] .new-banner .dismiss {
+      color: #fde68a;
+      background: rgba(253,230,138,0.12);
+    }
+
+    [data-theme="dark"] .new-banner .dismiss:hover {
+      background: rgba(253,230,138,0.2);
+    }
+
     /* ── HEADER ── */
     header {
       position: sticky;
@@ -859,6 +964,19 @@ const data = [
 // ── SORT by date descending ──────────────────────────────────────────────
 data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+// ── DETECT NEW ENTRIES ────────────────────────────────────────────────────
+const KNOWN_IDS_KEY = 'aihub_known_ids';
+const currentIds = new Set(data.map(e => e.id));
+const storedRaw  = localStorage.getItem(KNOWN_IDS_KEY);
+const knownIds   = storedRaw ? new Set(JSON.parse(storedRaw)) : null;
+
+// New IDs = entries present now but not in the stored set.
+// On first ever visit (nothing stored), nothing is "new".
+const newIds = knownIds ? new Set([...currentIds].filter(id => !knownIds.has(id))) : new Set();
+
+// Save current IDs for next refresh comparison
+localStorage.setItem(KNOWN_IDS_KEY, JSON.stringify([...currentIds]));
+
 // ── STATE ─────────────────────────────────────────────────────────────────
 let activeCategory = 'all';
 let searchQuery    = '';
@@ -875,17 +993,22 @@ function highlight(text, query) {
   return text.replace(re, '<mark style="background:#fef9c3;color:#713f12;border-radius:2px;padding:0 2px;">$1</mark>');
 }
 
-function buildCard(entry, query) {
+function buildCard(entry, query, isNew) {
   const catLabel = CAT_LABELS[entry.category] || entry.category;
   const title    = highlight(entry.title, query);
   const source   = highlight(entry.source, query);
   const summary  = highlight(entry.summary, query);
+  const newClass = isNew ? ' is-new' : '';
+  const newBadge = isNew ? '<span class="new-badge">New</span>' : '';
 
   return `
-    <article class="card" role="article">
+    <article class="card${newClass}" role="article">
       <div class="card-top">
         <span class="cat-tag ${entry.category}">${catLabel}</span>
-        <span class="card-date">${formatDate(entry.date)}</span>
+        <div style="display:flex;align-items:center;gap:0.4rem;">
+          ${newBadge}
+          <span class="card-date">${formatDate(entry.date)}</span>
+        </div>
       </div>
       <div class="card-source">${source}</div>
       <h2 class="card-title">${title}</h2>
@@ -926,7 +1049,30 @@ function render() {
     return;
   }
 
-  grid.innerHTML = filtered.map(e => buildCard(e, q)).join('');
+  grid.innerHTML = filtered.map(e => buildCard(e, q, newIds.has(e.id))).join('');
+}
+
+// ── NEW-ENTRIES BANNER ───────────────────────────────────────────────────
+function showNewBanner() {
+  if (newIds.size === 0) return;
+  const existing = document.getElementById('newBanner');
+  if (existing) return;
+
+  const banner = document.createElement('div');
+  banner.className = 'new-banner';
+  banner.id = 'newBanner';
+  banner.innerHTML = `
+    <span>&#127381; ${newIds.size} new resource${newIds.size > 1 ? 's' : ''} added since your last visit</span>
+    <button class="dismiss" aria-label="Dismiss" title="Dismiss">&times;</button>
+  `;
+
+  banner.querySelector('.dismiss').addEventListener('click', (e) => {
+    e.stopPropagation();
+    banner.remove();
+  });
+
+  const header = document.querySelector('header');
+  header.insertAdjacentElement('afterend', banner);
 }
 
 // ── EVENTS ──��─────────────────────────────────────────────────────────────
@@ -946,6 +1092,7 @@ document.getElementById('search').addEventListener('input', e => {
 
 // ── INIT ──────────────────────────────────────────────────────────────────
 render();
+showNewBanner();
 
 // ── AUTO-REFRESH every 6 hours (reliable across background tabs) ──────────
 const REFRESH_MS = 6 * 60 * 60 * 1000; // 6 hours in ms
